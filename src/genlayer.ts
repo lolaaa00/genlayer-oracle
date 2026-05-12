@@ -3,7 +3,7 @@ import { testnetBradbury } from 'genlayer-js/chains';
 
 const client = createClient({ network: testnetBradbury });
 
-export const CONTRACT_ADDRESS = '0xYOUR_ADDRESS_HERE';
+export const CONTRACT_ADDRESS = '0x2731A164724A4edC6E72Ad507D873B19521d1296';
 
 export async function classifyAgent(
   handle: string,

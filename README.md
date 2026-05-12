@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# GenLayer Oracle — AI Agent Classification System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A community identity tool where GenLayer's Intelligent Contract uses AI consensus to classify community members and assign them funny, meme-worthy agent profiles.
 
-Currently, two official plugins are available:
+## Live App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://genlayer-oracle.vercel.app/
 
-## React Compiler
+## How GenLayer powers the core mechanic
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. User enters their X handle, display name and Discord roles
+2. The frontend calls `classify_agent()` on the deployed Intelligent Contract
+3. 5 AI validators reach consensus using `gl.eq_principle_strict_eq()` and `gl.exec_prompt()`
+4. The Oracle assigns a unique role, power, quirk and lore entry
+5. The real transaction hash is displayed on the card
+6. User shares their card on X
 
-## Expanding the ESLint configuration
+## GenLayer Integration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Contract file:** `oracle_agent.py`
+**Contract address:** `0x2731A164724A4edC6E72Ad507D873B19521d1296`
+**Network:** Bradbury Testnet
+**SDK:** genlayer-js
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React + TypeScript + Vite
+- GenLayer Intelligent Contract (Python)
+- genlayer-js SDK
+- Deployed on Vercel
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Run locally
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Contract deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The Intelligent Contract is deployed on GenLayer Studio (Bradbury Testnet).
+Source: `oracle_agent.py`
