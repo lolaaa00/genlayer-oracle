@@ -2,16 +2,78 @@
 export const CONTRACT_ADDRESS = '0x2731A164724A4edC6E72Ad507D873B19521d1296';
 
 const FALLBACK = [
-  { role: "Consensus Menace", power: "Can settle validator arguments before they finish loading.", quirk: "Says 'gm' then vanishes for exactly 4 days.", lore: "Once forked the testnet on a dare. Never apologized. The fork had better uptime." },
-  { role: "Validator Therapist", power: "Emotionally stabilizes the network during contentious governance votes.", quirk: "Explains the same concept 5 different ways and thinks each time is different.", lore: "Held unofficial office hours in #general. 40 people showed. None of the problems were technical." },
-  { role: "Builder Goblin", power: "Ships prototypes before the requirements document exists.", quirk: "Opens 12 PRs simultaneously then disappears for the weekend.", lore: "Deployed to mainnet from a coffee shop at 4% battery. It worked. Nobody found out why." },
-  { role: "Silent Authority", power: "Maintains order without saying anything above a whisper.", quirk: "Reads every message but only replies to the ones nobody else noticed.", lore: "Has been watching since week one. Message count: 47. Influence: immeasurable." },
-  { role: "Testnet Survivor", power: "Has outlasted every restart, migration, and catastrophe since Asimov.", quirk: "Treats every new feature with quiet, well-earned suspicion.", lore: "Participated in Testnet Asimov just to say they were there. Brings it up every 3 weeks." },
-  { role: "Governance Sorcerer", power: "Writes proposals so clean that opposition dissolves before the vote.", quirk: "Overthinks casual Discord messages for 45 minutes.", lore: "Passed a proposal nobody wanted by writing a better one about it. The community still doesn't know." },
-  { role: "Contract Whisperer", power: "Reads Intelligent Contracts the way others read horoscopes.", quirk: "Leaves code comments funnier than the actual code.", lore: "Fixed a critical vulnerability at 3am and told nobody for a week. Commit message said 'cleanup'." },
-  { role: "Chaos Architect", power: "Introduces exactly the right entropy to make the system stronger.", quirk: "PRs marked 'small fix' are statistically the most dangerous.", lore: "Broke testnet twice improving the same function. The third attempt is referenced in lore." },
-  { role: "Protocol Phantom", power: "Operates across every channel without anyone mapping the full picture.", quirk: "Always has 3 tabs open to the same docs page.", lore: "Was in every important conversation from the start. Username appears once in each. Time zone: unknown." },
-  { role: "Braincell Operator", power: "Processes information at a speed that confuses other smart people.", quirk: "Says 'actually' in every technical thread. Is always right.", lore: "Corrected a whitepaper publicly. Authors updated the doc. No acknowledgment was given." },
+  { 
+    role: "Midnight Deployer", 
+    power: "Can push to production at 3am and somehow nothing breaks. Probably.", 
+    quirk: "Types 'it's just a small change' right before everything goes down.", 
+    lore: "Once deployed on a Friday. The team still doesn't talk about it. The contract still runs." 
+  },
+  { 
+    role: "Consensus Ghost", 
+    power: "Has been in every important GenLayer conversation but nobody can confirm they exist.", 
+    quirk: "Goes offline exactly when validators need them most.", 
+    lore: "Joined Testnet Asimov Day 1. Has mentioned it in every Discord conversation since." 
+  },
+  { 
+    role: "Perpetual Lurker", 
+    power: "Absorbs all community knowledge without saying a single word for weeks.", 
+    quirk: "Reads every message. Reacts with 👀. Never types.", 
+    lore: "Once broke their silence to correct a whitepaper. Was right. Went offline immediately after." 
+  },
+  { 
+    role: "Governance Menace", 
+    power: "Can write a proposal so well-structured that people vote yes before finishing it.", 
+    quirk: "Starts every Discord message with 'well actually...' and is always correct.", 
+    lore: "Proposed a change nobody wanted by reframing it as something everyone needed. It passed unanimously." 
+  },
+  { 
+    role: "Testnet Veteran", 
+    power: "Has survived every reset, migration, and catastrophic failure since Asimov.", 
+    quirk: "Treats every new feature like it personally wronged them in a past life.", 
+    lore: "Has a folder called 'testnet memories' with 47 screenshots. Nobody has seen it. Nobody will." 
+  },
+  { 
+    role: "PR Hoarder", 
+    power: "Opens 8 pull requests simultaneously and somehow all of them are important.", 
+    quirk: "Labels everything 'minor fix' including the time they rewrote the entire codebase.", 
+    lore: "Once left a PR open for 3 weeks, merged it on a Sunday, and it fixed a bug nobody knew existed." 
+  },
+  { 
+    role: "Validator Whisperer", 
+    power: "Can get 5 AI validators to reach consensus just by explaining things very slowly.", 
+    quirk: "Argues with their own code comments. The comments are winning.", 
+    lore: "Submitted a transaction so confusing that the network took 40 minutes to reach consensus. They called it a feature." 
+  },
+  { 
+    role: "Silent Moderator", 
+    power: "Maintains order in the Discord without anyone noticing they're doing it.", 
+    quirk: "Has a draft message for every situation that they never send.", 
+    lore: "Has been watching the server since week one. Message count: 31. Muted count: uncountable." 
+  },
+  { 
+    role: "Degen Builder", 
+    power: "Ships a working prototype before the product spec document even has a title.", 
+    quirk: "Their definition of 'done' and everyone else's definition are completely different documents.", 
+    lore: "Deployed from a moving vehicle once. The app is still live. The vehicle is still moving." 
+  },
+  { 
+    role: "Lore Keeper", 
+    power: "Has memorized every GenLayer blog post, tweet, and Discord message since inception.", 
+    quirk: "Answers every question with 'if you read the docs...' even when the docs don't cover it.", 
+    lore: "Was asked a question they didn't know. Researched for 4 hours. Came back with a 12-paragraph answer. Nobody asked a follow-up." 
+  },
+  { 
+    role: "Chaos Contributor", 
+    power: "Finds bugs by vibes. Fixes them by instinct. Documents nothing.", 
+    quirk: "Their commit messages are haikus. None of them are helpful.", 
+    lore: "Once introduced a bug to fix a bug. The new bug was better. It's now a feature." 
+  },
+  { 
+    role: "Oracle Abuser", 
+    power: "Finds creative ways to use Intelligent Contracts that the docs specifically said not to try.", 
+    quirk: "Treats the GenLayer network like a personal AI assistant for life decisions.", 
+    lore: "Deployed a contract to decide what to eat for lunch. It reached consensus: deploy more contracts." 
+  },
 ];
 
 function hash(s) {
@@ -21,19 +83,14 @@ function hash(s) {
 }
 
 export async function classifyAgent(handle, displayName, roles) {
-  // Simulate contract call delay
-  await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
+  await new Promise(r => setTimeout(r, 2000 + Math.random() * 1500));
   
   const h = hash((handle + displayName + roles).toLowerCase());
   const profile = FALLBACK[h % FALLBACK.length];
   
-  // Generate fake tx hash based on input
   const txHash = '0x' + Array.from({length: 64}, (_, i) => 
     ((h * (i + 1) * 2654435761) >>> 0).toString(16).padStart(8, '0')
   ).join('').slice(0, 64);
 
-  return {
-    ...profile,
-    txHash,
-  };
+  return { ...profile, txHash };
 }
